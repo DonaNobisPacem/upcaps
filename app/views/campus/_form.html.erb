@@ -1,0 +1,12 @@
+<%= simple_form_for @campu do |f| %>
+	<%= f.input :campus_name, required: true, autofocus: true %>
+
+	<h3>Profiles</h3>
+	<div class="nested-fields">
+	<%= f.simple_fields_for :campu_profiles do |profile| %>
+		<%= render 'campu_profile_fields', :f => profile %>
+	<% end %>
+	<%= link_to_add_association 'add', f, :campu_profiles %>
+	</div>
+	<%= f.button :submit, "Create new Campus" %>
+<% end %>
