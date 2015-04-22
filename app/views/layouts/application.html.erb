@@ -4,6 +4,7 @@
 		<title>UP CAPS</title>
 		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
@@ -18,19 +19,11 @@
 					</div>
 					<div class="col-xs-10">
 						<div class="col-xs-1">
-						green
 						</div>
 						<div class="col-xs-10">
-							<% flash.each do |name, msg| -%>
-								<% if user_signed_in? %>
-				            		<%= content_tag :div, msg, class: "alert alert-#{name}" %>
-				            	<% end %>
-				         	<% end %>
-
 							<%= yield %>
 						</div>
 						<div class="col-xs-1">
-						green
 						</div>
 					</div>
 				<% else %>

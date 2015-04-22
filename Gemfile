@@ -57,3 +57,5 @@ gem 'bootstrap-sass'
 # User authentication + registration
 gem 'devise'
 
+# Charts
+gem "chartkick"

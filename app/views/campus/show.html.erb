@@ -1,1 +1,76 @@
-<h1>Welcome to <%=@campu.campus_name%> </h1>
+
+<div class="panel panel-info">
+	<% @campu.campu_profiles.each do |profile| %>
+		<div class="panel-heading text-center">
+			<h1><b><%=@campu.campus_name%></b></h1>
+			<h5>A.Y. <%= profile.ay_from %> - <%= profile.ay_to%></h5>
+		</div> <!-- panel heading -->
+		<div class="panel-body">
+			<div class="tabbable">
+				<ul class="nav nav-pills">
+					<li role="presentation" class="active"><a href="#focus" data-toggle="pill">Academic Focus</a></li>
+				  	<li role="presentation"> <a href="#programs" data-toggle="pill">Programs</a></li>
+				  	<li role="presentation"> <a href="#upcat" data-toggle="pill">UPCAT</a></li>
+				  	<li role="presentation"> <a href="#studpop" data-toggle="pill">Student Population</a></li>
+				  	<li role="presentation"> <a href="#grad" data-toggle="pill">Graduates</a></li>
+				  	<li role="presentation"> <a href="#staff" data-toggle="pill">Staff</a></li>
+				  	<li role="presentation"> <a href="#area" data-toggle="pill">Area and Location</a></li>
+				  	<li role="presentation"> <a href="#needs" data-toggle="pill">Institutional Needs</a></li>
+				  	<li role="presentation"> <a href="#guidelines" data-toggle="pill">Development Guidelines</a></li>
+				</ul> <!-- ul pills-->
+				<div class="tab-content">
+					<div class="tab-pane active" id="focus">
+						<div class="well well-sm">
+							<%= simple_format( profile.field_ein ) %>
+						</div> <!-- well -->
+					</div> <!-- tab pane-->
+					<div class="tab-pane" id="programs">
+						<%= pie_chart ({"Undergraduates" => profile.program_undergrad, "Graduates" => profile.program_grad}) %>
+					</div> <!-- tab pane-->
+					<div class="tab-pane" id="upcat">
+						<%= pie_chart ({"Applicants" => profile.upcat_applicant, "Qualifiers" => profile.upcat_qualifier}) %>
+					</div> <!-- tab pane-->
+					<div class="tab-pane" id="studpop">
+						<%= pie_chart ({"Basic" => profile.studpop_basic, "Undergraduates" => profile.studpop_undergrad, "Graduates" => profile.studpop_grad}) %>
+					</div> <!-- tab pane-->
+					<div class="tab-pane" id="grad">
+						<%= pie_chart ({"Basic" => profile.grads_basic, "Undergraduates" => profile.grads_undergrad, "Graduates" => profile.grads_grad}) %>
+					</div> <!-- tab pane-->
+					<div class="tab-pane" id="staff">
+						<%= pie_chart ({"Faculty" => profile.faculty, "REPS" => profile.reps, "Admin" => profile.admin}) %>
+					</div> <!-- tab pane-->
+					<div class="tab-pane" id="area">
+						<div class="well well-sm">
+							<b>Total FTE Campus Population: </b>
+							<%= profile.total_fte_campus_pop %>
+							<br>
+							<b>Campus Area (in hectares): </b>
+							<%= profile.campus_area_hectare %>
+							<br>
+							<b>Area Location / Topography: </b>
+							<%= profile.topography %>
+							<br>
+							<b>Host LGU Unit: </b>
+							<%= profile.host_lgu %>
+						</div> <!-- well -->
+					</div> <!-- tab pane-->
+					<div class="tab-pane" id="needs">
+						<div class="well well-sm">
+							<%= simple_format(profile.field_zwei) %>
+							<%= simple_format(profile.field_drei) %>
+							<%= simple_format(profile.field_vier) %>
+						</div> <!-- well -->
+					</div> <!-- tab pane-->
+					<div class="tab-pane" id="guidelines">
+						<div class="well well-sm">
+							<%= simple_format(profile.field_funf) %>
+						</div> <!-- well -->
+					</div> <!-- tab pane-->
+				</div> <!-- tab content -->
+			</div> <!-- tabbable -->
+		</div> <!-- panel body -->
+	<% end %>
+	<%= button_tag :class => "btn btn-warning" do %>
+		<%= link_to "Edit", edit_campu_path(@campu) %>
+	<% end %>
+</div> <!-- panel info -->

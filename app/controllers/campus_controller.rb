@@ -1,6 +1,7 @@
 class CampusController < ApplicationController
 	def new
 		@campu = Campu.new
+		@campu.campu_profiles.build
 	end
 
 	def create

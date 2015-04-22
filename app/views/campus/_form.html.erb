@@ -3,10 +3,15 @@
 
 	<h3>Profiles</h3>
 	<div class="nested-fields">
-	<%= f.simple_fields_for :campu_profiles do |profile| %>
-		<%= render 'campu_profile_fields', :f => profile %>
-	<% end %>
-	<%= link_to_add_association 'add', f, :campu_profiles %>
+		<%= f.simple_fields_for :campu_profiles do |profile| %>
+			<%= render 'campu_profile_fields', :f => profile %>
+		<% end %>
+
+		<!-- for future implementation of additional profiles-->
+		<% button_tag :class => "btn btn-info" do %>
+			<% icon('add') %>
+			<% link_to_add_association 'Add a profile', f, :campu_profiles %>
+		<% end %>
 	</div>
-	<%= f.button :submit, "Create new Campus" %>
+	<%= f.button :submit, "Submit", :class => "btn btn-success" %>
 <% end %>
