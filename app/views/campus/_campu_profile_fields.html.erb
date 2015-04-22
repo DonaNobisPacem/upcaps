@@ -1,32 +1,151 @@
 
 <div class="nested-fields">
-<%= f.input :ay_from %>
-<%= f.input :ay_to %>
-<%= f.input :program_undergrad %>
-<%= f.input :program_grad %>
-<%= f.input :upcat_applicant %>
-<%= f.input :upcat_qualifier %>
-<%= f.input :studpop_basic %>
-<%= f.input :studpop_undergrad %>
-<%= f.input :studpop_grad %>
-<%= f.input :grads_basic %>
-<%= f.input :grads_undergrad %>
-<%= f.input :grads_grad %>
-<%= f.input :faculty %>
-<%= f.input :reps %>
-<%= f.input :admin %>
-<%= f.input :total_fte_campus_pop %>
-<%= f.input :campus_area_hectare %>
-<%= f.input :topography %>
-<%= f.input :host_lgu %>
-<%= f.input :field_ein %>
-<%= f.input :field_zwei %>
-<%= f.input :field_drei %>
-<%= f.input :field_vier %>
-<%= f.input :field_funf %>
-
-
-<%= link_to_remove_association 'remove', f %>
-</div>
-
-
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<div>
+				<b>A.Y.</b>
+				<%= f.input_field :ay_from %>
+				<b>-</b>
+				<%= f.input_field :ay_to %>
+			</div>
+		</div> <!-- panel heading -->
+		<div class="panel-body">
+			<div class="tabbable">
+				<ul class="nav nav-tabs">
+				  <li role="presentation" class="active"><a href="#info" data-toggle="tab">Info</a></li>
+				  <li role="presentation"> <a href="#statistics" data-toggle="tab">Statistics</a></li>
+				  <li role="presentation"> <a href="#needs" data-toggle="tab">Institutional Needs</a></li>
+				  <li role="presentation"> <a href="#guidelines" data-toggle="tab">Development Guidelines</a></li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active" id="info">
+						<div class="well well-sm">
+							<b>Became Constituent Unit/Academic Focus:</b>
+							<br>
+							<%= f.input_field :field_ein %>
+						</div>
+					</div> <!-- info -->
+					<div class="tab-pane" id="statistics">
+						<div class="well well-sm">
+							<b>Number of Programs:</b>
+							<li>
+							<%= f.label :program_undergrad, "Undergraduate:" %>
+							<%= f.input_field :program_undergrad %>
+							</li>
+							<li>
+							<%= f.label :program_grad, "Graduate:" %>
+							<%= f.input_field :program_grad %>
+							</li>
+						</div>
+						<div class ="well well-sm">
+							<b>UPCAT:</b>
+							<li>
+								<%= f.label :upcat_applicant, "Applicants:"%>
+								<%= f.input_field :upcat_applicant %>
+							</li>
+							<li>
+								<%= f.label :upcat_qualifier, "Qualifiers:"%>
+								<%= f.input_field :upcat_qualifier %>
+							</li>
+						</div>
+						<div class="well well-sm">
+							<b>Student Population:</b>
+							<li>
+								<%= f.label :studpop_basic, "Basic:"%>
+								<%= f.input_field :studpop_basic %>
+							</li>
+							<li>
+								<%= f.label :studpop_undergrad, "Undergraduates:"%>
+								<%= f.input_field :studpop_undergrad %>
+							</li>
+							<li>
+								<%= f.label :studpop_grad, "Graduates:"%>
+								<%= f.input_field :studpop_grad %>
+							</li>
+						</div>
+						<div class="well well-sm">
+							<b>Number of graduates:</b>
+							<li>
+								<%= f.label :grads_basic, "Basic:"%>
+								<%= f.input_field :grads_basic %>
+							</li>
+							<li>
+								<%= f.label :grads_undergrad, "Undergraduates:"%>
+								<%= f.input_field :grads_undergrad %>
+							</li>
+							<li>
+								<%= f.label :grads_grad, "Graduates:"%>
+								<%= f.input_field :grads_grad %>
+							</li>
+						</div>
+						<div class="well well-sm">
+							<b>Number of staff:</b>
+							<li>
+								<%= f.label :faculty, "Faculty:"%>
+								<%= f.input_field :faculty %>
+							</li>
+							<li>
+								<%= f.label :reps, "REPS:"%>
+								<%= f.input_field :reps %>
+							</li>
+							<li>
+								<%= f.label :admin, "Admin:"%>
+								<%= f.input_field :admin %>
+							</li>
+						</div>
+						<div class="well well-sm">
+							<b>Area and Location:</b>
+							<li>
+								<%= f.label :total_fte_campus_pop, "Total FTE Campus Population:"%>
+								<%= f.input_field :total_fte_campus_pop %>
+							</li>
+							<li>
+								<%= f.label :campus_area_hectare, "Campus Area (in hectares):"%>
+								<%= f.input_field :campus_area_hectare %>
+							</li>
+							<li>
+								<%= f.label :topography, "Area Location/Topography:"%>
+								<%= f.input_field :topography %>
+							</li>
+							<li>
+								<%= f.label :host_lgu, "Host LGU Unit:"%>
+								<%= f.input_field :host_lgu %>
+							</li>
+						</div>
+					</div> <!-- statistics -->
+					<div class="tab-pane" id="needs">
+						<div class="well well-sm">
+							<b>Campus General Institutional Needs:</b>
+							<li>
+								<%= f.label :field_zwei, "Quality of life for students, faculty, staff, and visitors:"%>
+								<br>
+								<%= f.input_field :field_zwei %>
+							</li>
+							<li>
+								<%= f.label :field_drei, "Facilities that support the University's teaching and research missions:"%>
+								<br>
+								<%= f.input_field :field_drei %>
+							</li>
+							<li>
+								<%= f.label :field_vier, "Linkages to the local and regional economic development:"%>
+								<br>
+								<%= f.input_field :field_vier %>
+							</li>
+						</div>
+					</div> <!-- needs -->
+					<div class="tab-pane" id="guidelines">
+						<div class="well well-sm">
+							<b>Specific Campus Development Guidelines:</b>
+							<br>
+							<%= f.input_field :field_funf %>
+						</div>
+					</div> <!-- guidelines -->
+				</div> <!-- tab content-->
+			</div> <!-- tabbable -->
+			<%= button_tag :class => "btn btn-warning pull-right" do %>
+				<%= icon('remove') %>
+				<%= link_to_remove_association 'Remove', f %>
+			<% end %>
+		</div><!-- panel body-->
+	</div> <!-- panel info -->
+</div> <!-- nested field -->

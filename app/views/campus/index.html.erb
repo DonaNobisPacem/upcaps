@@ -1,1 +1,13 @@
-Campus List
+<h1>Campus List</h1>
+<% @campu.each do |campu| %>
+	<%=link_to campu do %>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<%= image_tag "upseal.png"%>
+		</div>
+		<div class="panel-body">
+			<%= campu.campus_name%>
+		</div>
+	</div>
+	<% end %>
+<% end %>

@@ -17,9 +17,12 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-$baseFontFamily: 'FontAwesome';
+$font-family-base: 'FontAwesome';
 $body-bg: #E8E2EC !default;
+$navbar-default-bg: #557351;
+$navbar-default-link-color: #EBECB0;
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-.navbar { margin-bottom:0px !important; }
+body { padding-top: 50px; }
