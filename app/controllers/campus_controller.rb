@@ -1,4 +1,6 @@
 class CampusController < ApplicationController
+	before_action :authenticate_user!
+
 	def new
 		@campu = Campu.new
 		@campu.campu_profiles.build
@@ -8,16 +10,14 @@ class CampusController < ApplicationController
 		@campu = Campu.new(campu_params)
 
 		if @campu.save
-			flash[:success] = "Success"
 			redirect_to @campu
 		else
-			flash[:notice] = "Disaster"
 			render 'new'
 		end
 	end
 
 	def index
-		@campu = Campu.all
+		@campu = Campu.all.order( :campus_name )
 	end
 
 	def edit
@@ -42,6 +42,7 @@ class CampusController < ApplicationController
 
 	def show
 		@campu = Campu.find(params[:id])
+		@var_holder = VariableHolder.find(1)
 	end
 
 	private

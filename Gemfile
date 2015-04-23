@@ -58,4 +58,8 @@ gem 'bootstrap-sass'
 gem 'devise'
 
 # Charts
-gem "chartkick"
+gem 'chartkick'
+
+# File upload + handling
+gem 'carrierwave'
+gem 'mini_magick'

@@ -1,5 +1,9 @@
 <%= simple_form_for @campu do |f| %>
-	<%= f.input :campus_name, required: true, autofocus: true %>
+	<% if current_user.admin %>
+		<%= f.input :campus_name, required: true, autofocus: true %>
+	<% else %>
+		<%= f.input :campus_name, required: true, autofocus: true, :readonly => true %>
+	<% end %>
 
 	<h3>Profiles</h3>
 	<div class="nested-fields">
@@ -15,3 +19,4 @@
 	</div>
 	<%= f.button :submit, "Submit", :class => "btn btn-success" %>
 <% end %>
+<%= button_to "Back", 'javascript:history.go(-1);', :method => "get", :class => "btn btn-warning" %>

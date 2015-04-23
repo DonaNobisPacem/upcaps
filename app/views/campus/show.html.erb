@@ -1,4 +1,14 @@
 
+<% content_for :head do %>
+  <script type="text/javascript">
+    $(document).ready(function () {
+	    $(window).resize(function(){
+	        drawChart();
+	    });
+	});
+  </script>
+<% end %>
+
 <div class="panel panel-info">
 	<% @campu.campu_profiles.each do |profile| %>
 		<div class="panel-heading text-center">
@@ -7,58 +17,94 @@
 		</div> <!-- panel heading -->
 		<div class="panel-body">
 			<div class="tabbable">
-				<ul class="nav nav-pills">
+				<ul class="nav nav-pills nav-stacked col-xs-3">
 					<li role="presentation" class="active"><a href="#focus" data-toggle="pill">Academic Focus</a></li>
-				  	<li role="presentation"> <a href="#programs" data-toggle="pill">Programs</a></li>
-				  	<li role="presentation"> <a href="#upcat" data-toggle="pill">UPCAT</a></li>
-				  	<li role="presentation"> <a href="#studpop" data-toggle="pill">Student Population</a></li>
-				  	<li role="presentation"> <a href="#grad" data-toggle="pill">Graduates</a></li>
-				  	<li role="presentation"> <a href="#staff" data-toggle="pill">Staff</a></li>
-				  	<li role="presentation"> <a href="#area" data-toggle="pill">Area and Location</a></li>
+					<li role="presentation"> <a href="#statistics" data-toggle="pill">Statistics</a></li>
 				  	<li role="presentation"> <a href="#needs" data-toggle="pill">Institutional Needs</a></li>
 				  	<li role="presentation"> <a href="#guidelines" data-toggle="pill">Development Guidelines</a></li>
-				</ul> <!-- ul pills-->
-				<div class="tab-content">
+				  	<li> <a href="#"></a> </li>
+				  	<li> <a href="#"></a> </li>
+				  	<li> <a href="#"></a> </li>
+				  	<li> <a href="#"></a> </li>
+				  	<li> <a href="#"></a> </li>
+				  	<li role="presentation"> <a href="#po" data-toggle="pill">Planning Objectives</a></li>
+				  	<li role="presentation"> <a href="#pp" data-toggle="pill">Planning Principles</a></li>
+				  	<li role="presentation"> <a href="#np" data-toggle="pill">Network Principles</a></li>
+				</ul> <!-- nav pills stacked -->
+				<div class="tab-content col-xs-9">
 					<div class="tab-pane active" id="focus">
 						<div class="well well-sm">
 							<%= simple_format( profile.field_ein ) %>
 						</div> <!-- well -->
 					</div> <!-- tab pane-->
-					<div class="tab-pane" id="programs">
-						<%= pie_chart ({"Undergraduates" => profile.program_undergrad, "Graduates" => profile.program_grad}) %>
-					</div> <!-- tab pane-->
-					<div class="tab-pane" id="upcat">
-						<%= pie_chart ({"Applicants" => profile.upcat_applicant, "Qualifiers" => profile.upcat_qualifier}) %>
-					</div> <!-- tab pane-->
-					<div class="tab-pane" id="studpop">
-						<%= pie_chart ({"Basic" => profile.studpop_basic, "Undergraduates" => profile.studpop_undergrad, "Graduates" => profile.studpop_grad}) %>
-					</div> <!-- tab pane-->
-					<div class="tab-pane" id="grad">
-						<%= pie_chart ({"Basic" => profile.grads_basic, "Undergraduates" => profile.grads_undergrad, "Graduates" => profile.grads_grad}) %>
-					</div> <!-- tab pane-->
-					<div class="tab-pane" id="staff">
-						<%= pie_chart ({"Faculty" => profile.faculty, "REPS" => profile.reps, "Admin" => profile.admin}) %>
-					</div> <!-- tab pane-->
-					<div class="tab-pane" id="area">
+					<div class="tab-pane" id="statistics">
 						<div class="well well-sm">
-							<b>Total FTE Campus Population: </b>
-							<%= profile.total_fte_campus_pop %>
-							<br>
-							<b>Campus Area (in hectares): </b>
-							<%= profile.campus_area_hectare %>
-							<br>
-							<b>Area Location / Topography: </b>
-							<%= profile.topography %>
-							<br>
-							<b>Host LGU Unit: </b>
-							<%= profile.host_lgu %>
+							<ul class="nav nav-pills nav-justified">
+							  	<li role="presentation" class="active"> <a href="#programs" data-toggle="pill">Programs</a></li>
+							  	<li role="presentation"> <a href="#upcat" data-toggle="pill">UPCAT</a></li>
+							  	<li role="presentation"> <a href="#studpop" data-toggle="pill">Student Population</a></li>
+							  	<li role="presentation"> <a href="#grad" data-toggle="pill">Graduates</a></li>
+							  	<li role="presentation"> <a href="#staff" data-toggle="pill">Staff</a></li>
+							  	<li role="presentation"> <a href="#area" data-toggle="pill">Area and Location</a></li>
+							</ul> <!-- ul pills-->
+							<div class="tab-content">
+								<div class="tab-pane active" id="programs">
+									<%= pie_chart ({"Undergraduates" => profile.program_undergrad, "Graduates" => profile.program_grad}) %>
+								</div> <!-- tab pane-->
+								<div class="tab-pane" id="upcat">
+									<%= pie_chart ({"Applicants" => profile.upcat_applicant, "Qualifiers" => profile.upcat_qualifier}) %>
+								</div> <!-- tab pane-->
+								<div class="tab-pane" id="studpop">
+									<%= pie_chart ({"Basic" => profile.studpop_basic, "Undergraduates" => profile.studpop_undergrad, "Graduates" => profile.studpop_grad}) %>
+								</div> <!-- tab pane-->
+								<div class="tab-pane" id="grad">
+									<%= pie_chart ({"Basic" => profile.grads_basic, "Undergraduates" => profile.grads_undergrad, "Graduates" => profile.grads_grad}) %>
+								</div> <!-- tab pane-->
+								<div class="tab-pane" id="staff">
+									<%= pie_chart ({"Faculty" => profile.faculty, "REPS" => profile.reps, "Admin" => profile.admin}) %>
+								</div> <!-- tab pane-->
+								<div class="tab-pane" id="area">
+									<div class="well well-sm">
+										<b>Total FTE Campus Population: </b>
+										<%= profile.total_fte_campus_pop %>
+										<br>
+										<b>Campus Area (in hectares): </b>
+										<%= profile.campus_area_hectare %>
+										<br>
+										<b>Area Location / Topography: </b>
+										<%= profile.topography %>
+										<br>
+										<b>Host LGU Unit: </b>
+										<%= profile.host_lgu %>
+									</div> <!-- well -->
+								</div> <!-- tab pane-->
+							</div> <!-- tab content -->
 						</div> <!-- well -->
 					</div> <!-- tab pane-->
 					<div class="tab-pane" id="needs">
 						<div class="well well-sm">
-							<%= simple_format(profile.field_zwei) %>
-							<%= simple_format(profile.field_drei) %>
-							<%= simple_format(profile.field_vier) %>
+							<ul class="nav nav-pills nav-justified">
+							  	<li role="presentation" class="active"> <a href="#quality" data-toggle="pill">Quality of life</a></li>
+							  	<li role="presentation"> <a href="#facilities" data-toggle="pill">Facilities</a></li>
+							  	<li role="presentation"> <a href="#linkages" data-toggle="pill">Linkages</a></li>
+							</ul> <!-- ul pills-->
+							<div class="tab-content">
+								<div class="tab-pane active" id="quality">
+									<b>Quality of life for students, faculty, staff, and visitors:</b>
+									<br>
+									<%= simple_format(profile.field_zwei) %>
+								</div>
+								<div class="tab-pane" id="facilities">
+									<b>Facilities that support the University's teaching and research missions:</b>
+									<br>
+									<%= simple_format(profile.field_drei) %>
+								</div>
+								<div class="tab-pane" id="linkages">
+									<b>Linkages to the local and regional economic development:</b>
+									<br>
+									<%= simple_format(profile.field_vier) %>
+								</div>
+							</div>
 						</div> <!-- well -->
 					</div> <!-- tab pane-->
 					<div class="tab-pane" id="guidelines">
@@ -66,11 +112,30 @@
 							<%= simple_format(profile.field_funf) %>
 						</div> <!-- well -->
 					</div> <!-- tab pane-->
+					<div class="tab-pane" id="po">
+						<div class="well well-sm">
+							<b>Campus General Planning Objectives:</b>
+							<br>
+							<%= simple_format(@var_holder.field_ein) %>
+						</div> <!-- well -->
+					</div> <!-- tab pane-->
+					<div class="tab-pane" id="pp">
+						<div class="well well-sm">
+							<b>UP System Master Development Planning Principles:</b>
+							<br>
+							<%= simple_format(@var_holder.field_zwei) %>
+						</div> <!-- well -->
+					</div> <!-- tab pane-->
+					<div class="tab-pane" id="np">
+						<div class="well well-sm">
+							<b>International Sustainable Campus Network Principles:</b>
+							<br>
+							<%= simple_format(@var_holder.field_drei) %>
+						</div> <!-- well -->
+					</div> <!-- tab pane-->
 				</div> <!-- tab content -->
 			</div> <!-- tabbable -->
+			<%= button_to "Edit", edit_campu_path(@campu), :method => "get", :class => "btn btn-warning pull-right" %>
 		</div> <!-- panel body -->
-	<% end %>
-	<%= button_tag :class => "btn btn-warning" do %>
-		<%= link_to "Edit", edit_campu_path(@campu) %>
 	<% end %>
 </div> <!-- panel info -->

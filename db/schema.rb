@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150422071208) do
+ActiveRecord::Schema.define(version: 20150423085643) do
 
   create_table "campu_profiles", force: :cascade do |t|
     t.integer  "ay_from",              limit: 4
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20150422071208) do
     t.string   "campus_name", limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.string   "image",       limit: 255
   end
 
   create_table "users", force: :cascade do |t|
@@ -65,10 +66,26 @@ ActiveRecord::Schema.define(version: 20150422071208) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "admin",                  limit: 1,   default: false
+    t.boolean  "approved",               limit: 1,   default: false, null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "variable_holders", force: :cascade do |t|
+    t.text     "field_ein",    limit: 65535
+    t.text     "field_zwei",   limit: 65535
+    t.text     "field_drei",   limit: 65535
+    t.text     "field_vier",   limit: 65535
+    t.text     "field_funf",   limit: 65535
+    t.text     "field_sechs",  limit: 65535
+    t.text     "field_sieben", limit: 65535
+    t.text     "field_acht",   limit: 65535
+    t.text     "field_neun",   limit: 65535
+    t.text     "field_zehn",   limit: 65535
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
 
   add_foreign_key "campu_profiles", "campus"
 end
