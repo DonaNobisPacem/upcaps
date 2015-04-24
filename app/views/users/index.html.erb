@@ -1,0 +1,9 @@
+<div class ="col-xs-2"></div>
+	<div class="table-responsive col-xs-8">
+		<% if current_user.admin %>
+			<%= render 'userlist' %>
+		<% else %>
+			<%= render 'shared/unauthorized' %>
+		<% end %>
+	</div>
+<div class ="col-xs-2"></div>

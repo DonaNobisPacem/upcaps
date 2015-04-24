@@ -1,0 +1,12 @@
+<% @campu.each do |campu| %>
+	<%=link_to campu do %>
+		<div class="panel panel-default text-center col-xs-4" style="padding-left: 0; padding-right: 0;">
+			<div class="panel-body">
+				<%= image_tag campu.image.url(:header), :label => "label" %>
+			</div>
+			<div class="panel-footer">
+				<%= campu.campus_name%>
+			</div>
+		</div>
+	<% end %>
+<% end %>
