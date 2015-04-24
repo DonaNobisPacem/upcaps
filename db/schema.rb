@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150424035137) do
+ActiveRecord::Schema.define(version: 20150424041646) do
 
   create_table "campu_profiles", force: :cascade do |t|
     t.integer  "ay_from",              limit: 4
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20150424035137) do
     t.integer  "reps",                 limit: 4
     t.integer  "admin",                limit: 4
     t.integer  "total_fte_campus_pop", limit: 4
-    t.decimal  "campus_area_hectare",                precision: 10
+    t.decimal  "campus_area_hectare",                precision: 16, scale: 2
     t.string   "topography",           limit: 255
     t.string   "host_lgu",             limit: 255
     t.text     "field_ein",            limit: 65535
@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 20150424035137) do
     t.text     "field_drei",           limit: 65535
     t.text     "field_vier",           limit: 65535
     t.text     "field_funf",           limit: 65535
-    t.datetime "created_at",                                        null: false
-    t.datetime "updated_at",                                        null: false
+    t.datetime "created_at",                                                  null: false
+    t.datetime "updated_at",                                                  null: false
     t.integer  "campu_id",             limit: 4
   end
 

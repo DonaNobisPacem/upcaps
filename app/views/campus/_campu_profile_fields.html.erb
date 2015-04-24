@@ -101,7 +101,7 @@
 							</li>
 							<li>
 								<%= f.label :campus_area_hectare, "Campus Area (in hectares):"%>
-								<%= f.input_field :campus_area_hectare %>
+								<%= f.input_field :campus_area_hectare, value: number_with_precision(f.object.campus_area_hectare, precision: 2) %>
 							</li>
 							<li>
 								<%= f.label :topography, "Area Location/Topography:"%>
