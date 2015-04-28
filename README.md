@@ -37,7 +37,7 @@ Taken from (https://gorails.com) with slight modifications
 	sudo apt-get update
 	sudo apt-get install nodejs
 
-	gem install rails -v 4.2.0
+	gem install rails -v 4.2.1
 	rbenv rehash
 	rails -v
 	```
